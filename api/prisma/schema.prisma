@@ -12,6 +12,7 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(uuid())
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
@@ -24,6 +25,7 @@ model User {
 
 model Profile {
   id           Int      @id @default(autoincrement())
+  uuid         String   @unique @default(uuid())
   avatar       String?
   firstName    String
   lastName     String?
