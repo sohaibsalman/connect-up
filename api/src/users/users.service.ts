@@ -32,4 +32,8 @@ export class UsersService {
       where: { email },
     });
   }
+
+  async getUserId(uuid: string) {
+    return (await this.db.user.findUnique({ where: { uuid } })).id;
+  }
 }
