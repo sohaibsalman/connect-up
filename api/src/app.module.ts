@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { DbModule } from './db/db.module';
 import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
+import { AreasOfInterestModule } from './areas-of-interest/areas-of-interest.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UserProfileModule } from './user-profile/user-profile.module';
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     UserProfileModule,
+    AreasOfInterestModule,
   ],
   controllers: [HeartbeatController],
   providers: [],
