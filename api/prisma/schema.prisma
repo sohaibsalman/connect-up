@@ -24,16 +24,24 @@ model User {
 }
 
 model Profile {
-  id           Int      @id @default(autoincrement())
-  uuid         String   @unique @default(uuid())
-  avatar       String?
-  firstName    String
-  lastName     String?
-  dateOfBirth  String
-  mobileNumber String
-  gender       String
-  user         User     @relation(fields: [userId], references: [id])
-  userId       Int      @unique
+  id              Int     @id @default(autoincrement())
+  uuid            String  @unique @default(uuid())
+  avatar          String? @default("")
+  firstName       String
+  lastName        String?
+  dateOfBirth     String
+  mobileNumber    String
+  gender          String
+  bio             String? @default("")
+  headline        String? @default("")
+  companyName     String
+  companyWebsite  String? @default("")
+  linkedInProfile String
+  addressCountry  String
+  addressState    String
+  addressCity     String
+  user            User    @relation(fields: [userId], references: [id])
+  userId          Int     @unique
 
   @@map("UserProfile")
 }
