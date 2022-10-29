@@ -29,7 +29,7 @@ model Profile {
   avatar       String?
   firstName    String
   lastName     String?
-  dateOfBirth  DateTime
+  dateOfBirth  String
   mobileNumber String
   gender       String
   user         User     @relation(fields: [userId], references: [id])

@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   private genreateJwtToken(user: User) {
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.email, sub: user.uuid };
     return {
       access_token: this.jwtService.sign(payload),
     };
