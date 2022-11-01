@@ -7,6 +7,7 @@ import { DbModule } from './db/db.module';
 import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { AreasOfInterestModule } from './areas-of-interest/areas-of-interest.module';
+import { ProfileDiscoveryModule } from './profile-discovery/profile-discovery.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AreasOfInterestModule } from './areas-of-interest/areas-of-interest.mod
     UsersModule,
     UserProfileModule,
     AreasOfInterestModule,
+    ProfileDiscoveryModule,
   ],
   controllers: [HeartbeatController],
   providers: [],
