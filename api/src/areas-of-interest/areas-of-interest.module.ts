@@ -6,5 +6,6 @@ import { AreasOfInterestService } from './areas-of-interest.service';
 @Module({
   controllers: [AreasOfInterestController],
   providers: [AreasOfInterestService],
+  exports: [AreasOfInterestService],
 })
 export class AreasOfInterestModule {}
