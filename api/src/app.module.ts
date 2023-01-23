@@ -9,6 +9,10 @@ import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { AreasOfInterestModule } from './areas-of-interest/areas-of-interest.module';
 import { ProfileDiscoveryModule } from './profile-discovery/profile-discovery.module';
+import { User } from './users/user.entity';
+import { UserProfile } from './user-profile/user-profile.entity';
+import { AreasOfInterest } from './areas-of-interest/areas-of-interest.entity';
+import { UserAreasOfInterest } from './areas-of-interest/user-areas-of-interest.entity';
 
 @Module({
   imports: [
@@ -22,6 +26,7 @@ import { ProfileDiscoveryModule } from './profile-discovery/profile-discovery.mo
       useFactory: (config: ConfigService) => {
         return {
           type: 'sqlite',
+          entities: [User, UserProfile, AreasOfInterest, UserAreasOfInterest],
           database: config.get<string>('DATABASE_URL'),
           synchronize: true,
         };
