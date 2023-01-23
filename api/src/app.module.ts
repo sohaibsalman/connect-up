@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { HeartbeatController } from './heartbeat/heartbeat.controller';
 import { AuthModule } from './auth/auth.module';
@@ -13,7 +14,19 @@ import { ProfileDiscoveryModule } from './profile-discovery/profile-discovery.mo
   imports: [
     AuthModule,
     DbModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return {
+          type: 'sqlite',
+          database: config.get<string>('DATABASE_URL'),
+          synchronize: true,
+        };
+      },
+    }),
     UsersModule,
     UserProfileModule,
     AreasOfInterestModule,
