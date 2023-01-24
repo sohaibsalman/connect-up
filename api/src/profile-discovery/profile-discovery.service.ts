@@ -25,7 +25,7 @@ export class ProfileDiscoveryService {
     areaOfInterests: string[],
   ) {
     try {
-      const interestIds = await this.areaOfInterestService.getInterestId(
+      const interestIds = await this.areaOfInterestService.getInterestIds(
         areaOfInterests,
       );
 
