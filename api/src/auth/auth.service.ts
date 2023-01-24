@@ -20,15 +20,15 @@ export class AuthService {
   async signup(dto: AuthDto) {
     const passwordHash = await argon.hash(dto.password);
     const user = await this.userService.create(dto.email, passwordHash);
-    return { userId: user.uuid, ...this.genreateJwtToken(user) };
+    return { userId: user.uuid, ...this.generateJwtToken(user) };
   }
 
   login(user: User) {
-    return this.genreateJwtToken(user);
+    return this.generateJwtToken(user);
   }
 
   async validateUser(dto: AuthDto) {
-    const user = await this.userService.findyByEmail(dto.email);
+    const user = await this.userService.findByEmail(dto.email);
 
     // Throw exception if user does not exists
     if (!user) throw new NotFoundException('User does not exists');
@@ -46,7 +46,7 @@ export class AuthService {
     return user;
   }
 
-  private genreateJwtToken(user: User) {
+  private generateJwtToken(user: User) {
     const payload = { email: user.email, sub: user.uuid };
     return {
       access_token: this.jwtService.sign(payload),
