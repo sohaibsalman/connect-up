@@ -44,24 +44,4 @@ export class AreasOfInterestController {
   delete(@Param() { uuid }) {
     return this.areasOfInterestService.delete(uuid);
   }
-
-  @Get('user-interests')
-  @UseGuards(JwtAuthGuard)
-  getAreasOfInterestForUser(@Request() request) {
-    return this.areasOfInterestService.getAreasOfInterestForUser(
-      request.user.userId,
-    );
-  }
-
-  @Post('user-interests')
-  @UseGuards(JwtAuthGuard)
-  updateUserInterests(
-    @Request() request,
-    @Body() userInterests: UserAreasOfInterestDto,
-  ) {
-    return this.areasOfInterestService.updateUserInterests(
-      request.user.userId,
-      userInterests,
-    );
-  }
 }
