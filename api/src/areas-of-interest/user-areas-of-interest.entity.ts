@@ -21,9 +21,6 @@ export class UserAreasOfInterest {
   @ManyToOne(() => User, (user) => user.userAreaOfInterest)
   user: User;
 
-  @ManyToOne(
-    () => AreasOfInterest,
-    (areaOfInterest) => areaOfInterest.userAreasOfInterest,
-  )
+  @ManyToOne(() => User, (areaOfInterest) => areaOfInterest.userAreasOfInterest)
   areasOfInterest: AreasOfInterest;
 }

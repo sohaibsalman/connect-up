@@ -21,7 +21,7 @@ export class UsersService {
     return await this.repo.findOne({ where: { email } });
   }
 
-  async getUserId(uuid: string) {
-    return (await this.repo.findOne({ where: { uuid } })).id;
+  async findUser(uuid: string): Promise<User> {
+    return await this.repo.findOne({ where: { uuid } });
   }
 }

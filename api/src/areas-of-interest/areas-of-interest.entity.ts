@@ -5,10 +5,7 @@ import {
   Column,
   UpdateDateColumn,
   CreateDateColumn,
-  OneToMany,
 } from 'typeorm';
-
-import { UserAreasOfInterest } from './user-areas-of-interest.entity';
 
 @Entity({ name: 'AreasOfInterest' })
 export class AreasOfInterest {
@@ -30,10 +27,4 @@ export class AreasOfInterest {
 
   @Column()
   isActive: boolean;
-
-  @OneToMany(
-    () => UserAreasOfInterest,
-    (userAreaOfInterest) => userAreaOfInterest.areasOfInterest,
-  )
-  userAreasOfInterest: UserAreasOfInterest;
 }

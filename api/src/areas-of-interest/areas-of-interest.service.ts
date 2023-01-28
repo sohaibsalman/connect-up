@@ -11,12 +11,16 @@ import { AreasOfInterestDto } from './dto/areasOfInterst.dto';
 import { UserAreasOfInterestDto } from './dto/userAreasOfInterest.dto';
 import { UsersService } from '../users/users.service';
 import { AreasOfInterest } from './areas-of-interest.entity';
+import { UserAreasOfInterest } from './user-areas-of-interest.entity';
+import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class AreasOfInterestService {
   constructor(
     @InjectRepository(AreasOfInterest)
     private repo: Repository<AreasOfInterest>,
+    @InjectRepository(UserAreasOfInterest)
+    private userInterestRepo: Repository<UserAreasOfInterest>,
     private userService: UsersService,
   ) {}
 
@@ -51,29 +55,29 @@ export class AreasOfInterestService {
     return await this.repo.save(areasOfInterestList);
   }
 
-  async getAreasOfInterestForUser(userUuid: string) {
-    try {
-      return await this.repo.find({
-        where: { userAreasOfInterest: { user: { uuid: userUuid } } },
-        relations: { userAreasOfInterest: true },
-      });
-    } catch (error) {}
+  async getAreasOfInterestForUser(
+    userUuid: string,
+  ): Promise<AreasOfInterest[]> {
+    return await this.repo.find({
+      where: { userAreasOfInterest: { user: { uuid: userUuid } } },
+      relations: { userAreasOfInterest: true },
+    });
   }
 
   async updateUserInterests(
     userUuid: string,
     userInterests: UserAreasOfInterestDto,
   ) {
-    const userId = await this.userService.getUserId(userUuid);
+    const user = await this.userService.findUser(userUuid);
     // Add new interests for user
     const addedResults = await this.addUserInterests(
-      userId,
+      user,
       userInterests.interestsToAdd,
     );
 
     // Remove existing interests
     const removedResults = await this.removeUserInterests(
-      userId,
+      user,
       userInterests.interestsToRemove,
     );
 
@@ -90,23 +94,17 @@ export class AreasOfInterestService {
     });
   }
 
-  async addUserInterests(userId: number, uuids: string[]): Promise<number> {
-    // if (uuids.length === 0) return 0;
-    // const interestIds = await this.getInterestIds(uuids);
-    // const data = interestIds.map((x) => ({
-    //   userId,
-    //   areasOfInterestId: x.id,
-    // }));
-    // return (
-    //   await this.db.userAreasOfInterest.createMany({
-    //     data,
-    //     skipDuplicates: true,
-    //   })
-    // ).count;
-    return 0;
+  getAreas;
+
+  async addUserInterests(user: User, uuids: string[]): Promise<number> {
+    if (uuids.length === 0) return 0;
+    const areasOfInterest = await this.findMany(uuids);
+
+    const userInterests = this.userInterestRepo.create({user});
+    return await 
   }
 
-  async removeUserInterests(userId: number, uuids: string[]): Promise<number> {
+  async removeUserInterests(user: User, uuids: string[]): Promise<number> {
     // if (uuids.length === 0) return 0;
     // const interestIds = await this.getInterestIds(uuids);
     // return (
@@ -124,5 +122,9 @@ export class AreasOfInterestService {
 
   private async findOne(uuid: string) {
     return await this.repo.findOne({ where: { uuid } });
+  }
+
+  private async findMany(uuids: string[]): Promise<AreasOfInterest[]> {
+    return await this.repo.find({ where: { uuid: In([...uuids]) } });
   }
 }
