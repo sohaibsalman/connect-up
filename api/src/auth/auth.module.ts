@@ -15,6 +15,7 @@ import { LocalStrategy } from './strategy/local.strategy';
     UsersModule,
     PassportModule,
     JwtModule.register({
+      // TODO: Use DI to get JWT Secret
       secret: new ConfigService().get('JWT_SECRET'),
     }),
   ],

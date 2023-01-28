@@ -1,39 +1,27 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { DbService } from 'src/db/db.service';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(private db: DbService) {}
+  constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
   async create(email: string, password: string) {
     try {
-      const user = await this.db.user.create({
-        data: {
-          email,
-          password,
-        },
-      });
-
-      return user;
+      const user = this.repo.create({ email, password });
+      return await this.repo.save(user);
     } catch (error) {
-      if (error instanceof PrismaClientKnownRequestError) {
-        if (error.code === 'P2002')
-          throw new ForbiddenException('User already exists');
-        throw error;
-      }
+      throw new BadRequestException('User already exists');
     }
-
-    return null;
   }
 
-  async findyByEmail(email: string) {
-    return await this.db.user.findUnique({
-      where: { email },
-    });
+  async findByEmail(email: string) {
+    return await this.repo.findOne({ where: { email } });
   }
 
-  async getUserId(uuid: string) {
-    return (await this.db.user.findUnique({ where: { uuid } })).id;
+  async findUser(uuid: string): Promise<User> {
+    return await this.repo.findOne({ where: { uuid } });
   }
 }

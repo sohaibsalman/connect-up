@@ -15,13 +15,14 @@ import { AreasOfInterestService } from './areas-of-interest.service';
 import { AreasOfInterestDto } from './dto/areasOfInterst.dto';
 import { UserAreasOfInterestDto } from './dto/userAreasOfInterest.dto';
 
+// TODO: Create a custom serializer to send back custom responses
 @Controller('areas-of-interest')
 export class AreasOfInterestController {
   constructor(private areasOfInterestService: AreasOfInterestService) {}
 
   @Get()
-  get() {
-    return this.areasOfInterestService.get();
+  async getAllAreasOfInterest() {
+    return await this.areasOfInterestService.getAllAreasOfInterest();
   }
 
   @Post()
@@ -42,25 +43,5 @@ export class AreasOfInterestController {
   @Delete(':uuid')
   delete(@Param() { uuid }) {
     return this.areasOfInterestService.delete(uuid);
-  }
-
-  @Get('user-interests')
-  @UseGuards(JwtAuthGuard)
-  getAreasOfInterestForUser(@Request() request) {
-    return this.areasOfInterestService.getAreasOfInterestForUser(
-      request.user.userId,
-    );
-  }
-
-  @Post('user-interests')
-  @UseGuards(JwtAuthGuard)
-  updateUserInterests(
-    @Request() request,
-    @Body() userInterests: UserAreasOfInterestDto,
-  ) {
-    return this.areasOfInterestService.updateUserInterests(
-      request.user.userId,
-      userInterests,
-    );
   }
 }
