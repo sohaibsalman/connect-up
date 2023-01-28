@@ -5,7 +5,10 @@ import {
   Column,
   UpdateDateColumn,
   CreateDateColumn,
+  ManyToMany,
 } from 'typeorm';
+
+import { User } from '../users/user.entity';
 
 @Entity({ name: 'AreasOfInterest' })
 export class AreasOfInterest {
@@ -27,4 +30,7 @@ export class AreasOfInterest {
 
   @Column()
   isActive: boolean;
+
+  @ManyToMany(() => User)
+  users: User[];
 }
