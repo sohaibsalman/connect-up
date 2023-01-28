@@ -11,7 +11,6 @@ import { ProfileDiscoveryModule } from './profile-discovery/profile-discovery.mo
 import { User } from './users/user.entity';
 import { UserProfile } from './user-profile/user-profile.entity';
 import { AreasOfInterest } from './areas-of-interest/areas-of-interest.entity';
-import { UserAreasOfInterest } from './areas-of-interest/user-areas-of-interest.entity';
 
 @Module({
   imports: [
@@ -24,7 +23,7 @@ import { UserAreasOfInterest } from './areas-of-interest/user-areas-of-interest.
       useFactory: (config: ConfigService) => {
         return {
           type: 'sqlite',
-          entities: [User, UserProfile, AreasOfInterest, UserAreasOfInterest],
+          entities: [User, UserProfile, AreasOfInterest],
           database: config.get<string>('DATABASE_URL'),
           synchronize: true,
         };

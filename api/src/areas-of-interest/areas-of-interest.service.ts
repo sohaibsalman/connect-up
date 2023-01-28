@@ -1,26 +1,15 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 
 import { AreasOfInterestDto } from './dto/areasOfInterst.dto';
-import { UserAreasOfInterestDto } from './dto/userAreasOfInterest.dto';
-import { UsersService } from '../users/users.service';
 import { AreasOfInterest } from './areas-of-interest.entity';
-import { UserAreasOfInterest } from './user-areas-of-interest.entity';
-import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class AreasOfInterestService {
   constructor(
     @InjectRepository(AreasOfInterest)
     private repo: Repository<AreasOfInterest>,
-    @InjectRepository(UserAreasOfInterest)
-    private userInterestRepo: Repository<UserAreasOfInterest>,
-    private userService: UsersService,
   ) {}
 
   async getAllAreasOfInterest() {
