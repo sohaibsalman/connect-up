@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Api", "ConnectUp.Api\ConnectUp.Api.csproj", "{24E2B932-5D2B-4566-AB08-C2EA41F5133C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3D17CE6-28B7-4972-A512-ADAD24634C59}
+	EndGlobalSection
+EndGlobal
