@@ -7,8 +7,8 @@ A platform to connect together founders of a startup/business having similar int
 
 ## Tools and Technologies
 
- - [Typescript](https://www.typescriptlang.org/) 
- - [NestJS](https://nestjs.com/) for backend API
- - [Prisma ORM](https://www.prisma.io/) for database
+ - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/) 
+ - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/) for backend API
+ - [Entity Framework](https://learn.microsoft.com/en-us/ef/) for database
  - [React JS](https://reactjs.org/) for Web UI
 
