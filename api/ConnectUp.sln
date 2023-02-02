@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Api", "ConnectUp.Api\ConnectUp.Api.csproj", "{24E2B932-5D2B-4566-AB08-C2EA41F5133C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Api", "ConnectUp.Api\ConnectUp.Api.csproj", "{24E2B932-5D2B-4566-AB08-C2EA41F5133C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Models", "ConnectUp.Domain\ConnectUp.Models.csproj", "{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Persistence", "ConnectUp.Persistence\ConnectUp.Persistence.csproj", "{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Interface", "ConnectUp.Interface\ConnectUp.Interface.csproj", "{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectUp.Service", "ConnectUp.Service\ConnectUp.Service.csproj", "{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24E2B932-5D2B-4566-AB08-C2EA41F5133C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

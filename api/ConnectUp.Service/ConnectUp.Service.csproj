@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectUp.Domain\ConnectUp.Models.csproj" />
+    <ProjectReference Include="..\ConnectUp.Interface\ConnectUp.Interface.csproj" />
+    <ProjectReference Include="..\ConnectUp.Persistence\ConnectUp.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
