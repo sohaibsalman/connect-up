@@ -1,9 +1,11 @@
-﻿using ConnectUp.Models.Dtos.Auth;
+﻿using ConnectUp.Models;
 using ConnectUp.Models.Dtos.User;
+using System.Linq.Expressions;
 
 namespace ConnectUp.Interface;
 
 public interface IUserService
 {
-    Task<AuthDto> CreateUser(SignupDto signupDto);
+    Task<UserDto> CreateUser(string email, string password);
+    Task<UserDto> FindOne(Expression<Func<User, bool>> filterFunction);
 }

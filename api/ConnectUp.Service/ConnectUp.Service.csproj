@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Isopoh.Cryptography.Argon2" Version="1.1.12" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ConnectUp.Domain\ConnectUp.Models.csproj" />
     <ProjectReference Include="..\ConnectUp.Interface\ConnectUp.Interface.csproj" />
     <ProjectReference Include="..\ConnectUp.Persistence\ConnectUp.Persistence.csproj" />

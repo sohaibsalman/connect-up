@@ -8,17 +8,14 @@ namespace ConnectUp.Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
 
-        public AuthController(IUserService userService)
+        public AuthController(IAuthService authService)
         {
-            _userService = userService;
+            _authService = authService;
         }
 
         [HttpPost]
-        public async Task<AuthDto> Signup(SignupDto signupDto)
-        {
-            return await _userService.CreateUser(signupDto);
-        }
+        public async Task<AuthResponseDto> Signup(AuthRequestDto authDto) => await _authService.SignUp(authDto);
     }
 }
