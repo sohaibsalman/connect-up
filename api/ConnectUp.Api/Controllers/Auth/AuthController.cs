@@ -16,6 +16,14 @@ namespace ConnectUp.Api.Controllers
         }
 
         [HttpPost]
+        [Route("signup")]
         public async Task<AuthResponseDto> Signup(AuthRequestDto authDto) => await _authService.SignUp(authDto);
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<AuthResponseDto> Login(AuthRequestDto authDto)
+        {
+            return await _authService.Login(authDto);
+        }
     }
 }

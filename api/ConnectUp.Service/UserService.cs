@@ -22,7 +22,7 @@ public class UserService : IUserService
         await _context.Users.AddAsync(user);
         _context.SaveChanges();
 
-        return new UserDto { Uuid = user.Uuid, Email = user.Email };
+        return new UserDto { Uuid = user.Uuid, Email = user.Email, Password = user.Password };
     }
 
     public async Task<UserDto> FindOne(Expression<Func<User, bool>> filterFunction)
@@ -30,6 +30,6 @@ public class UserService : IUserService
         var user = await _context.Users.SingleOrDefaultAsync(filterFunction);
         if (user is null) return null;
 
-        return new UserDto { Email = user.Email, Uuid = user.Uuid };
+        return new UserDto { Email = user.Email, Uuid = user.Uuid, Password = user.Password };
     }
 }

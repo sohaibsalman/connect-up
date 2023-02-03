@@ -16,7 +16,14 @@ public class AuthService : IAuthService
 
     public async Task<AuthResponseDto> Login(AuthRequestDto authDto)
     {
-        throw new NotImplementedException();
+        var userInDb = await _userService.FindOne(x => x.Email == authDto.Email);
+        if (userInDb is null) throw new Exception("User not found");
+
+        bool isPasswordCorrect = PasswordManager.Verify(userInDb.Password!, authDto.Password);
+        if (!isPasswordCorrect) throw new Exception("Invalid Credentials");
+
+        string accessToken = JwtManager.GenerateToken(userInDb);
+        return new AuthResponseDto { AccessToken = accessToken };
     }
 
     public async Task<AuthResponseDto> SignUp(AuthRequestDto authDto)
@@ -27,6 +34,7 @@ public class AuthService : IAuthService
         string hashedPassword = PasswordManager.HashPassword(authDto.Password);
         UserDto user = await _userService.CreateUser(authDto.Email, hashedPassword);
 
-        return new AuthResponseDto { AccessToken = user.Uuid.ToString() };
+        string accessToken = JwtManager.GenerateToken(user);
+        return new AuthResponseDto { AccessToken = accessToken };
     }
 }
