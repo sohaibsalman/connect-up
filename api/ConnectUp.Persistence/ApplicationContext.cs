@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConnectUp.Persistence;
 
-public class ApplicationContext : DbContext
+public class ApplicationContext : DbContext, IApplicationContext
 {
     public ApplicationContext(DbContextOptions options) : base(options) { }
 
@@ -30,5 +30,5 @@ public class ApplicationContext : DbContext
         return base.SaveChanges();
     }
 
-    public DbSet<User>? Users { get; set; }
+    public DbSet<User> Users { get; set; }
 }

@@ -1,0 +1,8 @@
+### Signup
+POST http://localhost:5254/api/auth
+Content-Type: application/json
+
+{
+    "email": "sohaibsalman@gmail.com",
+    "password": "1234"
+}
