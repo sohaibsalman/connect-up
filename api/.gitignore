@@ -475,3 +475,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.vscode/
+connect-up.db-shm
+connect-up.db-wal

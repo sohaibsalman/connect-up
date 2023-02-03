@@ -1,13 +1,15 @@
+using ConnectUp.Api;
 using ConnectUp.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<ApplicationContext>(options =>
+builder.Services.AddDbContext<IApplicationContext, ApplicationContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("ApiDatabase"));
 });
+builder.Services.RegisterServiceDependencies();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -23,6 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
