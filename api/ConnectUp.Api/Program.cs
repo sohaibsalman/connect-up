@@ -1,4 +1,5 @@
 using ConnectUp.Api;
+using ConnectUp.Api.Middlewares;
 using ConnectUp.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,5 +30,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseGlobalExceptionHandling();
 
 app.Run();
