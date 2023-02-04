@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConnectUp.Domain\ConnectUp.Models.csproj" />
-    <ProjectReference Include="..\ConnectUp.Interface\ConnectUp.Interface.csproj" />
+    <ProjectReference Include="..\ConnectUp.Models\ConnectUp.Models.csproj" />
+    <ProjectReference Include="..\ConnectUp.Interfaces\ConnectUp.Interfaces.csproj" />
     <ProjectReference Include="..\ConnectUp.Persistence\ConnectUp.Persistence.csproj" />
-    <ProjectReference Include="..\Exceptions\Exceptions.csproj" />
+    <ProjectReference Include="..\ConnectUp.Exceptions\ConnectUp.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>

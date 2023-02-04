@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConnectUp.Service\ConnectUp.Service.csproj" />
+    <ProjectReference Include="..\ConnectUp.Services\ConnectUp.Services.csproj" />
   </ItemGroup>
 
 </Project>
