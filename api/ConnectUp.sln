@@ -5,15 +5,15 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Api", "ConnectUp.Api\ConnectUp.Api.csproj", "{24E2B932-5D2B-4566-AB08-C2EA41F5133C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Models", "ConnectUp.Domain\ConnectUp.Models.csproj", "{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Models", "ConnectUp.Models\ConnectUp.Models.csproj", "{F9E63885-DDCD-49DD-BF85-13CF8E6361F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Persistence", "ConnectUp.Persistence\ConnectUp.Persistence.csproj", "{82316098-313A-4F5E-8D9E-E4ECC7CB55AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Interface", "ConnectUp.Interface\ConnectUp.Interface.csproj", "{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Interfaces", "ConnectUp.Interfaces\ConnectUp.Interfaces.csproj", "{94B1BAC5-0829-4AE3-8BD7-626E2A4080D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Service", "ConnectUp.Service\ConnectUp.Service.csproj", "{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Services", "ConnectUp.Services\ConnectUp.Services.csproj", "{0BC4C409-7589-4CAE-8972-F9767BB1A0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{7C29B49F-8E06-4154-8600-67748D9BB071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectUp.Exceptions", "ConnectUp.Exceptions\ConnectUp.Exceptions.csproj", "{7C29B49F-8E06-4154-8600-67748D9BB071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

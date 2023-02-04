@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConnectUp.Domain\ConnectUp.Models.csproj" />
-    <ProjectReference Include="..\ConnectUp.Interface\ConnectUp.Interface.csproj" />
+    <ProjectReference Include="..\ConnectUp.Models\ConnectUp.Models.csproj" />
+    <ProjectReference Include="..\ConnectUp.Interfaces\ConnectUp.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
