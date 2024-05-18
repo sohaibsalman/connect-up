@@ -6,19 +6,21 @@ import { GiUnicorn } from 'react-icons/gi';
 import { useForm } from 'react-hook-form';
 import { LoginSchema, loginSchema } from '@/lib/schemas/login-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signInUser } from '@/app/actions/authActions';
 
 export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<LoginSchema>({
     mode: 'onTouched',
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: LoginSchema) => {
+    const result = await signInUser(data);
+    console.log(result);
   };
 
   return (
@@ -83,6 +85,7 @@ export default function LoginForm() {
                     size='lg'
                     type='submit'
                     isDisabled={!isValid}
+                    isLoading={isSubmitting}
                   >
                     Login
                   </Button>
