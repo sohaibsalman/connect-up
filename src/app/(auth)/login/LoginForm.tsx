@@ -1,9 +1,26 @@
+'use client';
 import React from 'react';
-import { Button, Card, CardBody, Image, Input } from '@nextui-org/react';
 import Link from 'next/link';
+import { Button, Card, CardBody, Image, Input } from '@nextui-org/react';
 import { GiUnicorn } from 'react-icons/gi';
+import { useForm } from 'react-hook-form';
+import { LoginSchema, loginSchema } from '@/lib/schemas/login-schema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export default function LoginForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<LoginSchema>({
+    mode: 'onTouched',
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <Card className='w-full'>
       <CardBody>
@@ -23,22 +40,30 @@ export default function LoginForm() {
               <GiUnicorn size={50} />
               <h3 className='text-2xl my-8 ml-3'>Welcome back to ConnectUp</h3>
             </div>
-            <form action='' className='w-[80%]'>
+            <form onSubmit={handleSubmit(onSubmit)} className='w-[80%]'>
               <div className='space-y-4'>
                 <Input
+                  defaultValue=''
                   size='lg'
                   label='Email'
                   variant='bordered'
                   color='primary'
                   radius='sm'
+                  {...register('email')}
+                  isInvalid={!!errors.email}
+                  errorMessage={errors.email?.message as string}
                 />
                 <Input
+                  defaultValue=''
                   size='lg'
                   label='Password'
                   type='password'
                   variant='bordered'
                   color='primary'
                   radius='sm'
+                  {...register('password')}
+                  isInvalid={!!errors.password}
+                  errorMessage={errors.password?.message as string}
                 />
                 <div className='flex justify-end gap-3 !mt-8'>
                   <Button
@@ -50,7 +75,12 @@ export default function LoginForm() {
                   >
                     Create account
                   </Button>
-                  <Button color='primary' size='lg'>
+                  <Button
+                    color='primary'
+                    size='lg'
+                    type='submit'
+                    isDisabled={!isValid}
+                  >
                     Login
                   </Button>
                 </div>
