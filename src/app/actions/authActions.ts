@@ -1,6 +1,6 @@
 'use server';
 import { AuthError } from 'next-auth';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import bcryptjs from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { LoginSchema } from '@/lib/schemas/login-schema';
@@ -33,6 +33,10 @@ export async function signInUser(
       return { status: 'error', error: 'Server error' };
     }
   }
+}
+
+export async function signOutUser() {
+  await signOut({ redirectTo: '/' });
 }
 
 export async function registerUser(

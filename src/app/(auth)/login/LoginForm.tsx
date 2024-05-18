@@ -7,8 +7,12 @@ import { useForm } from 'react-hook-form';
 import { LoginSchema, loginSchema } from '@/lib/schemas/login-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signInUser } from '@/app/actions/authActions';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -20,7 +24,13 @@ export default function LoginForm() {
 
   const onSubmit = async (data: LoginSchema) => {
     const result = await signInUser(data);
-    console.log(result);
+
+    if (result.status === 'success') {
+      router.push('/feed');
+      router.refresh();
+    } else {
+      toast.error(result.error as string);
+    }
   };
 
   return (

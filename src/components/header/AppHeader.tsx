@@ -2,8 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { Button, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
 import { GiUnicorn } from 'react-icons/gi';
+import { auth } from '@/auth';
 
-export default function AppHeader() {
+import UserMenu from './UserMenu';
+
+export default async function AppHeader() {
+  const session = await auth();
+
   return (
     <Navbar maxWidth='full' isBordered>
       <NavbarBrand className='text-2xl flex' as={Link} href='/'>
@@ -12,12 +17,23 @@ export default function AppHeader() {
         <span>Up</span>
       </NavbarBrand>
       <NavbarContent justify='end'>
-        <Button color='primary' variant='bordered' as={Link} href='/login'>
-          Login
-        </Button>
-        <Button color='primary' variant='bordered' as={Link} href='/register'>
-          Register
-        </Button>
+        {session?.user ? (
+          <UserMenu user={session.user} />
+        ) : (
+          <>
+            <Button color='primary' variant='bordered' as={Link} href='/login'>
+              Login
+            </Button>
+            <Button
+              color='primary'
+              variant='bordered'
+              as={Link}
+              href='/register'
+            >
+              Register
+            </Button>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );
