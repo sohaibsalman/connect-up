@@ -6,19 +6,37 @@ import { GiUnicorn } from 'react-icons/gi';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, registerSchema } from '@/lib/schemas/register-schema';
+import { registerUser } from '@/app/actions/authActions';
 
 export default function RegisterForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    setError,
+    formState: { errors, isValid, isSubmitting },
   } = useForm<RegisterSchema>({
     mode: 'onTouched',
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: RegisterSchema) => {
+    const result = await registerUser(data);
+
+    if (result.status === 'success') {
+      console.log('user registered');
+    } else {
+      if (Array.isArray(result.error)) {
+        result.error.forEach((e) => {
+          const fieldName = e.path.join('.') as
+            | 'email'
+            | 'fullName'
+            | 'password';
+          setError(fieldName, { message: e.message });
+        });
+      } else {
+        setError('root.serverError', { message: result.error });
+      }
+    }
   };
 
   return (
@@ -81,6 +99,11 @@ export default function RegisterForm() {
                   isInvalid={!!errors.password}
                   errorMessage={errors.password?.message}
                 />
+                {errors.root?.serverError && (
+                  <p className='text-danger'>
+                    {errors.root?.serverError.message}
+                  </p>
+                )}
                 <div className='flex justify-end gap-3 !mt-8'>
                   <Button
                     as={Link}
@@ -96,6 +119,7 @@ export default function RegisterForm() {
                     size='lg'
                     type='submit'
                     isDisabled={!isValid}
+                    isLoading={isSubmitting}
                   >
                     Register
                   </Button>
