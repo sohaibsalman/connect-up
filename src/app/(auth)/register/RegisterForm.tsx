@@ -4,17 +4,17 @@ import Link from 'next/link';
 import { Button, Card, CardBody, Image, Input } from '@nextui-org/react';
 import { GiUnicorn } from 'react-icons/gi';
 import { useForm } from 'react-hook-form';
-import { LoginSchema, loginSchema } from '@/lib/schemas/login-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { RegisterSchema, registerSchema } from '@/lib/schemas/register-schema';
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<LoginSchema>({
+  } = useForm<RegisterSchema>({
     mode: 'onTouched',
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(registerSchema),
   });
 
   const onSubmit = (data: any) => {
@@ -39,12 +39,25 @@ export default function LoginForm() {
             <div>
               <div className='flex items-center'>
                 <GiUnicorn size={50} className='text-primary' />
-                <h3 className='text-2xl ml-3'>Welcome back to ConnectUp</h3>
+                <h3 className='text-2xl ml-3'>Welcome to ConnectUp</h3>
               </div>
-              <p className='my-4 text-lg text-center'>Login to your account</p>
+              <p className='my-4 text-lg text-center'>
+                Create your new account
+              </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='w-[70%]'>
               <div className='space-y-4'>
+                <Input
+                  defaultValue=''
+                  size='lg'
+                  label='Name'
+                  variant='bordered'
+                  color='primary'
+                  radius='sm'
+                  {...register('fullName')}
+                  isInvalid={!!errors.fullName}
+                  errorMessage={errors.fullName?.message}
+                />
                 <Input
                   defaultValue=''
                   size='lg'
@@ -71,12 +84,12 @@ export default function LoginForm() {
                 <div className='flex justify-end gap-3 !mt-8'>
                   <Button
                     as={Link}
-                    href='/register'
+                    href='/login'
                     variant='light'
                     color='primary'
                     size='lg'
                   >
-                    Create account
+                    Have an account? Login
                   </Button>
                   <Button
                     color='primary'
@@ -84,7 +97,7 @@ export default function LoginForm() {
                     type='submit'
                     isDisabled={!isValid}
                   >
-                    Login
+                    Register
                   </Button>
                 </div>
               </div>
