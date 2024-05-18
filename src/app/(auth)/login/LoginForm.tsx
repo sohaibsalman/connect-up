@@ -37,10 +37,10 @@ export default function LoginForm() {
           </div>
           <div className='flex flex-col col-span-8 items-center justify-center'>
             <div className='flex items-center'>
-              <GiUnicorn size={50} />
+              <GiUnicorn size={50} className='text-primary' />
               <h3 className='text-2xl my-8 ml-3'>Welcome back to ConnectUp</h3>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className='w-[80%]'>
+            <form onSubmit={handleSubmit(onSubmit)} className='w-[70%]'>
               <div className='space-y-4'>
                 <Input
                   defaultValue=''
@@ -51,7 +51,7 @@ export default function LoginForm() {
                   radius='sm'
                   {...register('email')}
                   isInvalid={!!errors.email}
-                  errorMessage={errors.email?.message as string}
+                  errorMessage={errors.email?.message}
                 />
                 <Input
                   defaultValue=''
@@ -63,7 +63,7 @@ export default function LoginForm() {
                   radius='sm'
                   {...register('password')}
                   isInvalid={!!errors.password}
-                  errorMessage={errors.password?.message as string}
+                  errorMessage={errors.password?.message}
                 />
                 <div className='flex justify-end gap-3 !mt-8'>
                   <Button

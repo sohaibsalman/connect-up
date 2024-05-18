@@ -7,7 +7,7 @@ export default function AppHeader() {
   return (
     <Navbar maxWidth='full' isBordered>
       <NavbarBrand className='text-2xl flex' as={Link} href='/'>
-        <GiUnicorn className='text-4xl mr-2' />
+        <GiUnicorn className='text-4xl mr-2 text-primary' />
         <span>Connect</span>
         <span>Up</span>
       </NavbarBrand>
