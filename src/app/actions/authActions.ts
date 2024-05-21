@@ -1,6 +1,6 @@
 'use server';
 import { AuthError } from 'next-auth';
-import { signIn, signOut } from '@/auth';
+import { auth, signIn, signOut } from '@/auth';
 import bcryptjs from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { LoginSchema } from '@/lib/schemas/login-schema';
@@ -18,7 +18,6 @@ export async function signInUser(
       redirect: false,
     });
 
-    console.log(result);
     return { status: 'success', data: 'Logged in' };
   } catch (error) {
     console.log(error);
@@ -76,3 +75,11 @@ export async function getUserById(id: string) {
   return prisma.user.findUnique({ where: { id } });
 }
 
+export async function getCurrentUserId() {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) throw new Error('Unauthorized');
+
+  return userId;
+}
