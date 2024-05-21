@@ -7,10 +7,12 @@ import FollowButton from '@/components/FollowButton';
 
 type Props = {
   member: Member;
-  isFollowed: boolean;
+  followedIds: string[];
 };
 
-export default function MemberCard({ member, isFollowed }: Props) {
+export default function MemberCard({ member, followedIds }: Props) {
+  const isFollowed = followedIds.includes(member.userId);
+
   const preventLinkAction = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
