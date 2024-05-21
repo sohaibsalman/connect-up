@@ -7,7 +7,8 @@ export const membersData = [
     name: 'Sohaib Salman',
     created: '2020-06-24',
     lastActive: '2020-06-21',
-    description: 'Software engineer',
+    title: 'Software Engineer',
+    description: 'Full Stack software engineer with 3+ years of experience',
     city: 'Lahore',
     country: 'Pakistan',
     image: '/images/m1.jpeg',
@@ -20,6 +21,7 @@ export const membersData = [
     name: 'Lisa',
     created: '2020-06-24',
     lastActive: '2020-06-21',
+    title: 'Devops Engineer',
     description:
       'Sunt esse aliqua ullamco in incididunt consequat commodo. Nisi ad esse elit ipsum commodo fugiat est ad. Incididunt nostrud incididunt nostrud sit excepteur occaecat.\r\n',
     city: 'Greenbush',
@@ -39,6 +41,7 @@ export const membersData = [
     city: 'Celeryville',
     country: 'Grenada',
     image: '/images/f2.jpeg',
+    title: 'Founder',
   },
   {
     email: 'margo@test.com',
@@ -53,6 +56,7 @@ export const membersData = [
     city: 'Rosewood',
     country: 'Svalbard and Jan Mayen Islands',
     image: '/images/f3.jpeg',
+    title: 'CTO',
   },
   {
     email: 'lois@test.com',
@@ -67,6 +71,7 @@ export const membersData = [
     city: 'Orviston',
     country: 'Zimbabwe',
     image: '/images/f4.jpeg',
+    title: 'CEO',
   },
   {
     email: 'ruthie@test.com',
@@ -81,6 +86,7 @@ export const membersData = [
     city: 'Germanton',
     country: 'Antigua and Barbuda',
     image: '/images/f5.jpeg',
+    title: 'CFO',
   },
   {
     email: 'porter@test.com',
@@ -95,6 +101,7 @@ export const membersData = [
     city: 'Welda',
     country: 'Christmas Island',
     image: '/images/m2.jpeg',
+    title: 'Vice President',
   },
   {
     email: 'mayo@test.com',
@@ -109,6 +116,7 @@ export const membersData = [
     city: 'Clarence',
     country: 'Burkina Faso',
     image: '/images/m3.jpeg',
+    title: 'President',
   },
   {
     email: 'skinner@test.com',
@@ -123,6 +131,7 @@ export const membersData = [
     city: 'Herald',
     country: 'Poland',
     image: '/images/m4.jpeg',
+    title: 'Charimain',
   },
   {
     email: 'davis@test.com',
@@ -137,5 +146,6 @@ export const membersData = [
     city: 'Lupton',
     country: 'Luxembourg',
     image: '/images/m5.jpeg',
+    title: 'Global Lead',
   },
 ];

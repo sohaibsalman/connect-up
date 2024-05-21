@@ -23,6 +23,7 @@ async function seedMembers() {
             city: member.city,
             country: member.country,
             description: member.description,
+            title: member.title,
             image: member.image,
             photos: {
               create: {

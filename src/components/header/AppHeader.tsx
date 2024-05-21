@@ -39,8 +39,8 @@ export default async function AppHeader() {
           />
           <NavItem
             icon={<AiOutlineBulb size={30} />}
-            title='Matches'
-            href='/matches'
+            title='Connect'
+            href='/connect'
           />
           <NavItem
             icon={<AiOutlineMessage size={30} />}

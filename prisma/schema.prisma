@@ -48,6 +48,7 @@ model Member {
   dateOfBirth DateTime
   created     DateTime @default(now())
   updated     DateTime @default(now())
+  title       String
   description String
   city        String
   country     String
