@@ -39,7 +39,7 @@ export default function MemberSidebar({ member }: Props) {
         className='rounded-full'
       />
       <CardBody>
-        <div className='flex flex-col items-center '>
+        <div className='flex flex-col items-center text-center'>
           <div className='flex flex-col'>
             <span className='text-2xl font-semibold'>{member.name}</span>
             <span className='text-medium'>{member.title}</span>

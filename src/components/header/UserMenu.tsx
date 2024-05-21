@@ -10,6 +10,7 @@ import {
   User,
 } from '@nextui-org/react';
 import { signOutUser } from '@/app/actions/authActions';
+import Link from 'next/link';
 
 type Props = {
   user: Session['user'];
@@ -36,7 +37,7 @@ export default function UserMenu({ user }: Props) {
             <p className='font-semibold'>Signed in as</p>
             <p className='font-semibold'>{user?.email}</p>
           </DropdownItem>
-          <DropdownItem key='profile' textValue='Profile'>
+          <DropdownItem key='profile' as={Link} href={`/members/${user?.id}`}>
             Profile
           </DropdownItem>
           <DropdownItem key='settings' textValue='Settings'>

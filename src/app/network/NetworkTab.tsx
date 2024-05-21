@@ -41,7 +41,7 @@ export default function NetworkTab({ members, followedIds }: Props) {
   };
 
   return (
-    <div className='flex w-full flex-col mt-10 gap-5 items-center'>
+    <div className='flex w-full flex-col mt-10 gap-5'>
       <Tabs
         aria-label='Followers tab'
         items={tabs}
