@@ -10,13 +10,7 @@ type Props = {
 
 export default function MemberCard({ member }: Props) {
   return (
-    <Card
-      radius='lg'
-      className='border-none'
-      fullWidth
-      as={Link}
-      href={`/members/${member.userId}`}
-    >
+    <Card isPressable fullWidth as={Link} href={`/members/${member.userId}`}>
       <Image
         isZoomed
         alt={member.name}
