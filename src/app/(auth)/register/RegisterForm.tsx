@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, registerSchema } from '@/lib/schemas/register-schema';
 import { registerUser } from '@/app/actions/authActions';
+import { handleServerFormErrors } from '@/lib/utils';
 
 export default function RegisterForm() {
   const {
@@ -25,17 +26,7 @@ export default function RegisterForm() {
     if (result.status === 'success') {
       console.log('user registered');
     } else {
-      if (Array.isArray(result.error)) {
-        result.error.forEach((e) => {
-          const fieldName = e.path.join('.') as
-            | 'email'
-            | 'fullName'
-            | 'password';
-          setError(fieldName, { message: e.message });
-        });
-      } else {
-        setError('root.serverError', { message: result.error });
-      }
+      handleServerFormErrors(result, setError);
     }
   };
 

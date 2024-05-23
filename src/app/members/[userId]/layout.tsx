@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { getMemberUserId } from '@/app/actions/memberActions';
+import { getMemberByUserId } from '@/app/actions/memberActions';
 import MemberSidebar from '../MemberSidebar';
 import { Card } from '@nextui-org/react';
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default async function Layout({ children, params }: Props) {
-  const member = await getMemberUserId(params.userId);
+  const member = await getMemberByUserId(params.userId);
 
   if (!member) return notFound();
 
