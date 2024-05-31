@@ -1,49 +1,41 @@
 import React from 'react';
-import {
-  CardHeader,
-  Divider,
-  CardBody,
-  Card,
-  CardFooter,
-  Button,
-} from '@nextui-org/react';
+import Link from 'next/link';
+import { CardHeader, Divider, CardBody, Button } from '@nextui-org/react';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { getCurrentUserId } from '@/app/actions/authActions';
-import { getMemberPhotosByUserId } from '@/app/actions/memberActions';
-import { FiStar, FiTrash } from 'react-icons/fi';
+import {
+  getMemberByUserId,
+  getMemberPhotosByUserId,
+} from '@/app/actions/memberActions';
 import MemberAddImageButton from './MemberAddImageButton';
-import MemberPhoto from '@/components/MemberPhoto';
+import MemberPhotosList from '@/components/MemberPhotosList';
 
 export default async function PhotoEditPage() {
   const userId = await getCurrentUserId();
+  const member = await getMemberByUserId(userId);
   const photos = await getMemberPhotosByUserId(userId);
 
   return (
     <>
       <CardHeader className='flex justify-between items-center'>
         <span className='text-2xl text-primary font-semibold'>Edit Photos</span>
+        <Button
+          isIconOnly
+          color='primary'
+          as={Link}
+          href={`/members/${userId}/photos`}
+        >
+          <AiOutlineCheckCircle size={22} />
+        </Button>
       </CardHeader>
       <Divider />
       <CardBody>
         <MemberAddImageButton />
-        <div className='grid grid-cols-5 gap-3'>
-          {photos?.map((photo) => (
-            <>
-              <Card shadow='sm' key={photo.id}>
-                <CardBody className='overflow-visible p-0'>
-                  <MemberPhoto photo={photo} />
-                </CardBody>
-                <CardFooter className='gap-2'>
-                  <Button isIconOnly color='primary' className='flex-grow'>
-                    <FiStar size={20} className='fill-white' />
-                  </Button>
-                  <Button isIconOnly color='danger' className='flex-grow'>
-                    <FiTrash size={20} />
-                  </Button>
-                </CardFooter>
-              </Card>
-            </>
-          ))}
-        </div>
+        <MemberPhotosList
+          photos={photos}
+          editing={true}
+          mainPhotoUrl={member?.image}
+        />
       </CardBody>
     </>
   );

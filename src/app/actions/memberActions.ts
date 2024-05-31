@@ -41,5 +41,6 @@ export async function getMemberPhotosByUserId(userId: string) {
     return memberPhotos.photos.map((photo) => photo) as Photo[];
   } catch (error) {
     console.log(error);
+    throw(error);
   }
 }

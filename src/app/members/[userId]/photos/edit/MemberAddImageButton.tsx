@@ -19,7 +19,7 @@ export default function MemberAddImageButton() {
   };
 
   return (
-    <div className='py-5'>
+    <div className='pb-5'>
       <ImageUploadButton onAddImage={addImage} />
     </div>
   );
