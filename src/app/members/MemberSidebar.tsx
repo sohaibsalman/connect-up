@@ -8,13 +8,14 @@ import { usePathname } from 'next/navigation';
 
 type Props = {
   member: Member;
+  currentUserId: string;
 };
 
-export default function MemberSidebar({ member }: Props) {
+export default function MemberSidebar({ member, currentUserId }: Props) {
   const basePath = `/members/${member.userId}`;
   const pathname = usePathname();
 
-  const navLinks = [
+  let navLinks = [
     {
       title: 'Profile',
       href: basePath,
@@ -28,6 +29,10 @@ export default function MemberSidebar({ member }: Props) {
       href: `${basePath}/chat`,
     },
   ];
+
+  if (member.userId === currentUserId) {
+    navLinks = navLinks.filter((x) => x.title !== 'Chat');
+  }
 
   return (
     <Card className='w-full items-center h-full py-8 px-4'>
